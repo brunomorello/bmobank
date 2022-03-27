@@ -1,0 +1,29 @@
+<form (ngSubmit)="wireAmount()">
+    <label class="mdc-text-field mdc-text-field--outlined">
+        <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+                <span class="mdc-floating-label" id="my-label-id">Person</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+        </span>
+        <input [(ngModel)]="person" name="person" type="text" class="mdc-text-field__input"
+            aria-labelledby="my-label-id">
+    </label>
+
+    <label class="mdc-text-field mdc-text-field--outlined">
+        <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+                <span class="mdc-floating-label" id="my-label-id">Amount</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+        </span>
+        <input [(ngModel)]="amount" name="amount" type="text" class="mdc-text-field__input"
+            aria-labelledby="my-label-id">
+    </label>
+
+    <button class="mdc-button mdc-button--raised">
+        <span class="mdc-button__label">Wire</span>
+    </button>
+</form>

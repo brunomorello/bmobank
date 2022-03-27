@@ -1,0 +1,20 @@
+<p>Activities: {{ wires.length }}</p>
+
+<table>
+    <thead>
+        <th>When</th>
+        <th>Destiny Account</th>
+        <th>Amount</th>
+    </thead>
+    <tbody *ngIf="wires && wires.length > 0; else emptyActivity">
+        <tr *ngFor="let wire of wires">
+            <td>{{ wire?.logDateTime | date: 'medium' }}</td>
+            <td>{{ wire?.destinyAcc }}</td>
+            <td>{{ wire?.amount | currency }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #emptyActivity>
+    <p>No Activities to show</p>
+</ng-template>
