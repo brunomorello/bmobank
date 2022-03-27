@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { WireRequest } from '../model/wire-request';
+import { HttpClient } from '@angular/common/http';
+import { WireRequest } from '../models/wire-request';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +9,17 @@ import { WireRequest } from '../model/wire-request';
 export class WireServiceService {
 
   private _wiresList: WireRequest[];
+  private _url = 'http://localhost:3000/wires';
 
-  constructor() { 
+  constructor(private httpClient: HttpClient) { 
     this._wiresList = [];
   }
 
-  get wiresList(): WireRequest[] {
-    return this._wiresList;
+  wiresList(): Observable<WireRequest[]> {
+    return this.httpClient.get<WireRequest[]>(this._url);
   }
 
-  newWire(wireReq: WireRequest) {
-    this._wiresList.push(wireReq);
+  newWire(wireReq: WireRequest): Observable<WireRequest> {
+    return this.httpClient.post<WireRequest>(this._url, wireReq);
   }
 }

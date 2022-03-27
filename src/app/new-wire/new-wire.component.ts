@@ -1,7 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MDCTextField } from '@material/textfield';
-import { MDCRipple } from '@material/ripple';
-import { WireRequest } from '../model/wire-request';
+import { WireRequest } from '../models/wire-request';
 
 @Component({
   selector: 'app-new-wire',
@@ -26,6 +24,7 @@ export class NewWireComponent implements OnInit {
     console.log(`Wire Requested`);
 
     this.wireReq = {
+      id: 0,
       destinyAcc: this.person,
       sourceAcc: 'test',
       amount: this.amount,

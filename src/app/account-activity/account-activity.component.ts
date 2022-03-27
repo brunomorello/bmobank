@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WireRequest } from '../model/wire-request';
+import { WireRequest } from '../models/wire-request';
 import { WireServiceService } from '../services/wire-service.service';
 
 @Component({
@@ -14,7 +14,10 @@ export class AccountActivityComponent implements OnInit {
   constructor(private service: WireServiceService) { }
 
   ngOnInit(): void {
-    this.wires = this.service.wiresList;
+    this.service.wiresList().subscribe((wires: WireRequest[]) => {
+      console.table(wires);
+      this.wires = wires;
+    })
   }
 
 }
