@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { WireRequest } from '../models/wire-request';
+import { WireServiceService } from '../services/wire-service.service';
 
 @Component({
   selector: 'app-new-wire',
@@ -14,7 +16,7 @@ export class NewWireComponent implements OnInit {
   public person!: string;
   private wireReq!: WireRequest;
 
-  constructor() {
+  constructor(private service: WireServiceService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,6 +33,11 @@ export class NewWireComponent implements OnInit {
       logDateTime: new Date()
     };
 
+    this.service.newWire({...this.wireReq})
+      .subscribe(res => {
+        console.log(res);
+        this.router.navigateByUrl('acc-activity');
+      });
     this.transferRequestEvent.emit(this.wireReq);
     this.clearFields();
   }

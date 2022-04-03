@@ -29,3 +29,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## JSON Server 
 
 Mock a backend using a fake REST API (https://github.com/typicode/json-server)
+
+## Prettier
+
+npm install --save-dev prettier
+npm install --save-dev tslint-config-prettier
+npm install --save-dev tslint-plugin-prettier
+
+tslint.json must have this:
+
+"extends": ["tslint:recommended", "tslint-plugin-prettier", "tslint-config-prettier"]
+
+## Angular Material
+
+npm install @angular/material @angular/cdk @angular/animations --save
